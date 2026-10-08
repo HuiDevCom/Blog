@@ -7,7 +7,7 @@ import type { TimelineItem } from "@/types/timelineConfig";
 export const timelineData: TimelineItem[] = [
 	{
 		title: "把小站整理成自己的笔记本",
-		date: "2026.06.15",
+		date: "2026.10.08",
 		category: "milestone",
 		subtitle: "风绘笔记 · HuiDev Notes",
 		description:

@@ -104,6 +104,8 @@ export type SiteConfig = {
 
 	/** IANA time zone used to interpret precise content timestamps. */
 	timeZone: string;
+	/** 站点开始运行日期（YYYY-MM-DD）；省略、留空或无效时，运行天数回退到最早文章日期。 */
+	siteStartDate?: string;
 
 	themeColor: {
 		hue: number;

@@ -30,6 +30,8 @@ export const siteConfig: SiteConfig = withUserConfig("site", {
 	lang: "zh_CN", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	// IANA time zone for precise post and moment timestamps. It is independent of lang.
 	timeZone: "Asia/Shanghai",
+	// 站点开始运行日期（YYYY-MM-DD），用于统计运行天数；留空则从最早文章日期计算。
+	siteStartDate: "2026-06-15",
 	themeColor: {
 		hue: 250, // 默认色相 0-360；本站使用 250，配色由 HCT 引擎生成。
 		fixed: false, // Hide the theme color picker for visitors
