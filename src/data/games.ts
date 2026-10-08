@@ -1,35 +1,24 @@
 /**
  * 游戏展示页数据源（纯内容）。
  * 页面展示与筛选规则由 src/config/gamesConfig.ts 控制。
- *
- * 封面支持三种写法：
- * - src/assets 相对路径（如本文件所用，走 Astro 图片管线自动优化为 webp/avif）；
- * - /public 绝对路径（如 "/assets/games/xxx.webp"，原样输出）；
- * - 远程 URL（https://…）。
- *
- * 注：以下为演示条目——评分 / 时长 / 状态是占位数值，请按自己的实际情况调整；
- * 封面取自各游戏官方商店页或官网主视觉。
+ * 未填写的评分、游玩时长和平台不显示。
  */
 import type { GameItem } from "@/types/gamesConfig";
 
 export const gamesData: GameItem[] = [
 	{
-		id: "nte-neverness-to-everness",
-		name: "NTE: Neverness to Everness",
-		developer: "Hotta Studio",
+		id: "genshin-impact",
+		name: "原神",
+		developer: "米哈游",
 		category: "open-world",
 		status: "playing",
-		cover: "assets/games/yihuan-hero.jpg",
+		// 原神官方首页主视觉海报：https://ys.mihoyo.com/main/_nuxt/img/poster.47f71d4.jpg
+		cover: "assets/games/genshin-hero.jpg",
 		icon: "material-symbols:explore-outline-rounded",
-		rating: 4.5,
-		hours: 86,
-		platform: "PC",
-		year: "2026",
-		tags: ["Open World", "Urban", "Supernatural"],
+		tags: ["开放世界", "冒险", "RPG"],
 		description:
-			"A supernatural urban open-world RPG. As an anomaly-user who senses the “waves” of people and anomalies, you join E.T.D Squad Six and investigate the city's paranormal events.",
-		link: "https://yh.wanmei.com/main.html",
-		featured: true,
+			"在提瓦特大陆展开开放世界冒险，探索不同国度，结识伙伴，组建队伍与强敌交战，也可以随心漫游，发现旅途中的风景与故事。",
+		link: "https://ys.mihoyo.com/",
 	},
 	{
 		id: "minecraft",
@@ -39,13 +28,9 @@ export const gamesData: GameItem[] = [
 		status: "playing",
 		cover: "assets/games/minecraft-hero.jpg",
 		icon: "material-symbols:widgets-rounded",
-		rating: 5,
-		hours: 420,
-		platform: "PC",
-		year: "2011",
-		tags: ["Sandbox", "Survival", "Building"],
+		tags: ["沙盒", "生存", "建造"],
 		description:
-			"A blocky sandbox where you mine, craft and build across procedurally generated worlds. Survive the night, or just keep building — alone or with friends.",
+			"由方块构成的沙盒世界，可以采集资源、合成工具、探索地形和自由建造。选择生存或创造模式，独自冒险，或与朋友一起实现天马行空的想法。",
 		link: "https://www.minecraft.net/",
 	},
 ];

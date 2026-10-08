@@ -19,7 +19,7 @@ export const timelineConfig: TimelineConfig = withUserConfig("timeline", {
 	categories: [
 		{
 			key: "milestone",
-			label: "Milestones",
+			label: "站点记录",
 			icon: "material-symbols:flag-rounded",
 		},
 		{

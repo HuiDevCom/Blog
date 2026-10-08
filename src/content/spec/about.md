@@ -1,26 +1,32 @@
-# About Shirone
+# 关于风绘
 
-Welcome to the demo site of **Shirone** (白音) — an expressive, anime-inspired blog theme built on the **Material 3 Expressive (M3E)** design system.
+你好，我是 **风绘（Fenghui）**，一名正在学习计算机应用与网络技术的学生，也在摸索前端开发。喜欢顺着兴趣尝试新东西，再把过程和收获记下来。
 
-::github{repo="LyraVoid/Shirone"}
+> 欲买桂花同载酒，终不似，少年游。
 
-## ✦ Design & Philosophy
+## 从 Minecraft 开始
 
-Shirone aims to combine the warmth of expressive anime aesthetics with the rigor of modern web engineering:
+2024 年夏天，我对搭建 Minecraft 服务器产生了兴趣。为了给服务器做一个网站，2025 年初开始接触前端开发，也慢慢有了搭建个人博客的想法。
 
-- **Dynamic Chromatic Spell**: Full dynamic HCT palette generation responding seamlessly to light/dark modes and user preferences with zero layout shifts.
-- **Seamless Shell Navigation**: Persistent application shell driven by Swup for continuous music playback, smooth page transitions, and preserved state.
-- **Rich Story Grimoire**: Markdown and MDX authoring with KaTeX math, Mermaid diagrams, interactive admonitions, expressive code blocks, and adaptive image galleries.
-- **Zero Extra Burden**: Optional integrations (comments, analytics, music widgets) load dynamically on demand — zero DOM footprint and zero bundle overhead when disabled.
+目前在学习 **Python 和 MySQL**。接下来还想继续了解全栈开发、网络技术与 AI 开发，把学到的东西用在实际的小项目里。
 
-## ✦ Tech Stack
+代码之外，喜欢动漫、视觉小说和二次元游戏，也会玩原神和 Minecraft。欢迎交流技术，或聊聊共同的兴趣。
 
-- **Framework**: [Astro 7](https://astro.build/) & [Svelte 5](https://svelte.dev/) (Runes-driven islands)
-- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) & [Stylus](https://stylus-lang.com/)
-- **Design Standard**: [Material 3 Expressive](https://m3.material.io/)
-- **Typography**: Outfit & Yozai (悠哉圆体) with automated build-time subsetting
-- **Search Engine**: [Pagefind](https://pagefind.app/) offline full-text search
+## 关于风绘笔记
 
-## ✦ Credits
+**风绘笔记 · HuiDev Notes** 是我的个人博客，2026 年 6 月 15 日上线并通过 ICP 备案。这里记录学习笔记、网站与服务的折腾过程，以及一些日常见闻。
 
-- **Font**: [Yozai Font (悠哉字体)](https://github.com/lxgw/yozai-font) by [lxgw](https://github.com/lxgw)
+本站基于 [Shirone](https://github.com/LyraVoid/Shirone) 主题搭建。希望它既是一个方便回头查阅的笔记本，也是一处可以慢慢整理想法的地方。
+
+## 正在维护的小项目
+
+- **[风绘云盘](https://pan.huidev.com)**：提供文件存储、备份、分享与在线预览，方便管理文档、照片和视频。
+- **[风绘 API](https://api.huidev.com)**：基于 New API 的统一 AI 网关，聚合上游渠道，提供独立令牌、用量与额度管理。
+
+## 找到我
+
+- GitHub：[HuiDevCom](https://github.com/HuiDevCom)
+- 博客仓库：[HuiDevCom/Blog](https://github.com/HuiDevCom/Blog)
+- 邮箱：[fenghui@huidev.com](mailto:fenghui@huidev.com)
+
+如果想交换友链，欢迎通过邮件联系，附上站点名称、网址、头像和一句话介绍即可。

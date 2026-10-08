@@ -29,6 +29,7 @@ describe("Feature Data & Resolver Tests", () => {
 			enable: true,
 			categories: [],
 			disabledKeys: ["folkpatch"],
+			items: [{ key: "shirone" }, { key: "folkpatch" }, { key: "kernelpatch" }],
 		};
 		const resolved = resolveProjectsData(config);
 		assert.ok(resolved.some((p) => p.key === "shirone"));
@@ -41,6 +42,7 @@ describe("Feature Data & Resolver Tests", () => {
 			enable: true,
 			categories: [],
 			disabledNames: ["PHP"],
+			items: [{ name: "TypeScript" }, { name: "PHP" }],
 		};
 		const resolved = resolveSkillsData(config);
 		assert.ok(resolved.some((s) => s.name === "TypeScript"));
@@ -53,10 +55,18 @@ describe("Feature Data & Resolver Tests", () => {
 			categories: [],
 			order: "asc",
 			disabledTitles: ["Senior Frontend Engineer"],
+			items: [
+				{ title: "Senior Frontend Engineer", date: "2025.03 – Present" },
+				{ title: "First Project", date: "2024.01" },
+				{
+					title: "Computer Science & Engineering Degree",
+					date: "2020.09 – 2024.06",
+				},
+			],
 		};
 		const resolved = resolveTimelineData(config);
 		assert.ok(!resolved.some((t) => t.title === "Senior Frontend Engineer"));
-		// timelineData 中最旧的条目是 2020.09 – 2024.06 (Computer Science & Engineering Degree)
+		// 筛选与排序使用独立夹具，不依赖站点的个人时间线。
 		assert.equal(resolved[0].title, "Computer Science & Engineering Degree");
 	});
 
@@ -85,6 +95,7 @@ describe("Feature Data & Resolver Tests", () => {
 			enable: true,
 			categories: [],
 			disabledIds: ["iphone-16-pro"],
+			items: [{ id: "macbook-pro-16" }, { id: "iphone-16-pro" }],
 		};
 		const resolved = resolveDevicesData(config);
 		assert.ok(resolved.some((d) => d.id === "macbook-pro-16"));

@@ -19,15 +19,15 @@ export const gamesConfig: GamesConfig = withUserConfig("games", {
 	categories: [
 		{
 			key: "open-world",
-			label: "Open World",
+			label: "开放世界",
 			icon: "material-symbols:explore-outline-rounded",
-			description: "Open-world adventures",
+			description: "开放世界探索与冒险",
 		},
 		{
 			key: "sandbox",
-			label: "Sandbox",
+			label: "沙盒",
 			icon: "material-symbols:widgets-rounded",
-			description: "Building, crafting & creative worlds",
+			description: "自由建造、合成与创作",
 		},
 		{
 			key: "rpg",
