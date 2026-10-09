@@ -508,20 +508,24 @@ test.describe("Markdown syntax runtime loading", () => {
 		page,
 	}) => {
 		const githubApiRequests = trackGitHubApiRequests(page);
-		await page.route(
-			"https://api.github.com/repos/LyraVoid/Shirone",
-			async (route) => {
-				await new Promise((resolve) => setTimeout(resolve, 250));
-				await route.fulfill({
-					status: 200,
-					contentType: "application/json",
-					body: JSON.stringify(GITHUB_REPOSITORY_MOCK),
-				});
-			},
-		);
+		await page.route("https://api.github.com/repos/**", async (route) => {
+			await new Promise((resolve) => setTimeout(resolve, 250));
+			await route.fulfill({
+				status: 200,
+				contentType: "application/json",
+				body: JSON.stringify(GITHUB_REPOSITORY_MOCK),
+			});
+		});
 
 		await page.goto(GITHUB_CARD_PATH, { waitUntil: "domcontentloaded" });
-		const card = page.locator("#swup-container a.card-github");
+		const cards = page.locator("#swup-container a.card-github");
+		const card = page.locator(
+			'#swup-container a.card-github[data-github-repo="LyraVoid/Shirone"]',
+		);
+		const blogCard = page.locator(
+			'#swup-container a.card-github[data-github-repo="HuiDevCom/Blog"]',
+		);
+		await expect(cards).toHaveCount(2);
 		await expect(card).toHaveCount(1);
 		await expect(card).toBeVisible();
 		await expect(card).toHaveAttribute(
@@ -561,7 +565,13 @@ test.describe("Markdown syntax runtime loading", () => {
 			"src",
 			GITHUB_REPOSITORY_MOCK.owner.avatar_url,
 		);
-		expect(githubApiRequests).toEqual([
+		await expect(blogCard).toHaveAttribute(
+			"href",
+			"https://github.com/HuiDevCom/Blog",
+		);
+		await expect(blogCard).toHaveAttribute("data-github-state", "ready");
+		expect([...githubApiRequests].sort()).toEqual([
+			"https://api.github.com/repos/HuiDevCom/Blog",
 			"https://api.github.com/repos/LyraVoid/Shirone",
 		]);
 
@@ -572,11 +582,19 @@ test.describe("Markdown syntax runtime loading", () => {
 			GITHUB_CARD_PATH,
 		);
 		await page.waitForURL(`**${GITHUB_CARD_PATH}`);
+		await expect(cards).toHaveCount(2);
 		await expect(card).toHaveCount(1);
 		await expect(card).toBeVisible();
 		await expect(card.locator("script")).toHaveCount(0);
 		await expect(card).toHaveAttribute("data-github-state", "ready");
-		expect(githubApiRequests).toEqual([
+		await expect(blogCard).toHaveAttribute(
+			"href",
+			"https://github.com/HuiDevCom/Blog",
+		);
+		await expect(blogCard).toHaveAttribute("data-github-state", "ready");
+		expect([...githubApiRequests].sort()).toEqual([
+			"https://api.github.com/repos/HuiDevCom/Blog",
+			"https://api.github.com/repos/HuiDevCom/Blog",
 			"https://api.github.com/repos/LyraVoid/Shirone",
 			"https://api.github.com/repos/LyraVoid/Shirone",
 		]);
@@ -585,7 +603,7 @@ test.describe("Markdown syntax runtime loading", () => {
 	test("keeps the SSR fallback when GitHub API returns an error", async ({
 		page,
 	}) => {
-		await page.route("https://api.github.com/repos/LyraVoid/Shirone", (route) =>
+		await page.route("https://api.github.com/repos/**", (route) =>
 			route.fulfill({
 				status: 503,
 				contentType: "application/json",
@@ -594,7 +612,9 @@ test.describe("Markdown syntax runtime loading", () => {
 		);
 
 		await page.goto(GITHUB_CARD_PATH, { waitUntil: "domcontentloaded" });
-		const card = page.locator("#swup-container a.card-github");
+		const card = page.locator(
+			'#swup-container a.card-github[data-github-repo="LyraVoid/Shirone"]',
+		);
 		await expect(card).toHaveAttribute("data-github-state", "error");
 		await expect(card).toHaveClass(/\bfetch-error\b/);
 		await expect(card).toHaveAttribute(
@@ -610,24 +630,23 @@ test.describe("Markdown syntax runtime loading", () => {
 	test("resolves a timed out GitHub request to the SSR fallback", async ({
 		page,
 	}) => {
-		await page.route(
-			"https://api.github.com/repos/LyraVoid/Shirone",
-			async (route) => {
-				await new Promise((resolve) => setTimeout(resolve, 10_250));
-				try {
-					await route.fulfill({
-						status: 200,
-						contentType: "application/json",
-						body: JSON.stringify(GITHUB_REPOSITORY_MOCK),
-					});
-				} catch {
-					// The client timeout aborts this route before the delayed response.
-				}
-			},
-		);
+		await page.route("https://api.github.com/repos/**", async (route) => {
+			await new Promise((resolve) => setTimeout(resolve, 10_250));
+			try {
+				await route.fulfill({
+					status: 200,
+					contentType: "application/json",
+					body: JSON.stringify(GITHUB_REPOSITORY_MOCK),
+				});
+			} catch {
+				// The client timeout aborts this route before the delayed response.
+			}
+		});
 
 		await page.goto(GITHUB_CARD_PATH, { waitUntil: "domcontentloaded" });
-		const card = page.locator("#swup-container a.card-github");
+		const card = page.locator(
+			'#swup-container a.card-github[data-github-repo="LyraVoid/Shirone"]',
+		);
 		await expect(card).toHaveAttribute("data-github-state", "error", {
 			timeout: 15_000,
 		});

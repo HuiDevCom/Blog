@@ -16,7 +16,11 @@
 
 **风绘笔记 · HuiDev Notes** 是我的个人博客，2026 年 6 月 15 日上线并通过 ICP 备案。这里记录学习笔记、网站与服务的折腾过程，以及一些日常见闻。
 
-本站基于 [Shirone](https://github.com/LyraVoid/Shirone) 主题搭建。希望它既是一个方便回头查阅的笔记本，也是一处可以慢慢整理想法的地方。
+::github{repo="HuiDevCom/Blog"}
+
+本站基于 Shirone 主题搭建。希望它既是一个方便回头查阅的笔记本，也是一处可以慢慢整理想法的地方。
+
+::github{repo="LyraVoid/Shirone"}
 
 ## 正在维护的小项目
 
@@ -26,7 +30,6 @@
 ## 找到我
 
 - GitHub：[HuiDevCom](https://github.com/HuiDevCom)
-- 博客仓库：[HuiDevCom/Blog](https://github.com/HuiDevCom/Blog)
 - 邮箱：[fenghui@huidev.com](mailto:fenghui@huidev.com)
 
 如果想交换友链，欢迎通过邮件联系，附上站点名称、网址、头像和一句话介绍即可。
