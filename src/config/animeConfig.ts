@@ -52,9 +52,9 @@ export const animeConfig: AnimeConfig = withUserConfig("anime", {
 		fetchOnDev: true,
 	},
 
-	/** 异常降级策略（快照丢失或解析失败时显示空状态） */
+	/** 异常降级策略（快照丢失或解析失败时使用随代码发布的本地兜底） */
 	fallback: {
-		kind: "empty",
+		kind: "local",
 	},
 
 	/** 外部提供方配置 */
